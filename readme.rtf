@@ -1,0 +1,42 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf100
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Oblique;\f2\fswiss\fcharset0 Helvetica-Bold;
+}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww22320\viewh15000\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 This program creates a graphic 8 x 8 board and allows the user to play Othello against the computer. The user is given options for difficulty levels and color choice. The program also features some tasteful taunts from 
+\f1\i Monty Python and the Holy Grail
+\f0\i0 .\
+\
+There are five files needed to run this program.\
+\
+1) graphics.py \
+\
+I\'92ll assume you\'92re familiar with this one.\
+\
+2) obutton.py\
+\
+This is my updated version of the Button class we designed in class. This version includes labels with the buttons as well as button color choice.\
+\
+3) othelloint.py\
+\
+Here is where the majority of the important programming happened. This file contains programming so that anyone can play Othello. It can be used to have two human players oppose each other (the second player would just use self.CPU_color for their color) but also has the groundwork for a human to compete against an intelligent computer program. All of this takes place in the class OthelloGraphicsInterface. Honestly, I wonder if I should have broken it into multiple classes, a class for the actual gameplay and turn functions, and a second class for the graphical component. It might have been neater or more organized.\
+\
+As is though, it\'92s a pretty good class. First it creates a title screen (just for aesthetics). Then it has a screen that has Buttons for the player\'92s difficulty options. Then there is a screen with Button options for the player\'92s color choice. After these choices are made, the game begins. Every time it\'92s the player\'92s turn and the player clicks somewhere, there is a function that finds the column/row coordinates of that click. First the program tests to see if that move is legal using the surroundings and pathways function and the dictionary containing the status of every square on the board. Then those coordinates are put into the surroundings function, which tests the surroundings of the square to see which ones have opposite color tiles. The locations of the opposite color tiles are run through the pathways function, which checks to see which of these tiles have valid rows, columns, or diagonals that can be flipped. It then returns the locations of every tile that should be flipped, and the values of those locations are changed. New tiles are drawn over the old ones with the flip color.\
+\
+There is also an endscreen function that displays the final score as well as a Monty Python quote depending on the outcome of the game.\
+\
+4) intelligentplayer.py\
+\
+This file contains the IntelligentPlayer class, which features methods that try to make an optimal move on the Othello board. There is a method that checks if any corners on the board are available for a legal move, a method that checks the boundaries, and method that attempts to contain moves in the middle of the board. There is also a method that finds a move in a list of moves that would flip the most tiles and a method that finds the move on the entire board that flips the most tiles. Depending on which difficulty level the player chooses, the IntelligentPlayer class uses different sets of these methods. \
+\
+5) othello.py\
+\
+
+\f2\b This is the file you have to run in order to play the game.
+\f0\b0  It contains the class Othello which is pretty simple. The play method checks to see who goes first and then alternates player turns in a loop that ends when there are no legal moves left on the board. The end method then puts up the endscreen from the OthelloGraphicInterface class. Between turns, and before the end message, there are time delays of one second so that the human player a) has time to see what move the IntelligentPlayer class makes and b) can feel like the computer is \'93thinking,\'94 thereby making it a more satisfying opponent. \
+\
+\
+I have tested this program over 100 times and have had friends play it too. I have fixed every bug that I could think of and I think at this point everything is working (dare I say it?) perfectly.}
